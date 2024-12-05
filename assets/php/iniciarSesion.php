@@ -16,11 +16,11 @@
 
 // se manda una alerta si el campo requerido esta en blanco
     if (empty($Usuario)){
-        header("Location: ../inse.php?error=El usuario es requerido");
+        header("Location: ../../inse.php?error=El usuario es requerido");
         exit();
     }
     elseif (empty($Codigo)){
-        header("Location: ../inse.php?error=El codigo es requerido");
+        header("Location: ../../inse.php?error=El codigo es requerido");
         exit();
 }
 // incriptar contraseña
@@ -35,26 +35,26 @@
     if($filas['cargo'] == 1){
         header("location:../../indexad.html");
     }elseif ($filas['cargo'] == 2){
-        header("location:../usuario/usuario.php");#; code...
+        header("location:../../usuario/usuario.php");#; code...
     }else{
-                header("Location: ../inse.php?error=El usuario o la clave son incorrectas");
+                header("Location: ../../inse.php?error=El usuario o la clave son incorrectas");
                 exit();
     }}}
-    //     $row = mysqli_fetch_assoc($result);
-    //     if($row['Usuario'] == $Usuario && $row['Codigo'] == $Codigo){
-    //         $_SESSION['Usuario'] = $row['Usuario'];
-    //         header("Location: ../admin/admin.php");
-    //         exit();}
-    //         elseif{
-    //     }else{
-    //         header("Location: ../inse.php?error=El usuario o la clave son incorrectas");
-    //         exit();
-    //     }
-    // }else{
-    //     header("Location: ../inse.php?error=El usuario o la clave son incorrectas");
-    //     exit();
-    // }
+        $row = mysqli_fetch_assoc($result);
+        if($row['Usuario'] == $Usuario && $row['Codigo'] == $Codigo){
+            $_SESSION['Usuario'] = $row['Usuario'];
+            header("Location: ../admin/admin.php");
+            exit();}
+//             elseif{
+//         }else{
+//             header("Location: ../../inse.php?error=El usuario o la clave son incorrectas");
+//             exit();
+//         }
+//     }else{
+//         header("Location: ../../inse.php?error=El usuario o la clave son incorrectas");
+//         exit();
+//     }
 
-    // }
-    // }
+// }}}}}}}}}}}
+//     }
 ?>

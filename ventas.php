@@ -28,6 +28,8 @@
 
   <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet">
+  <!-- iconos -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
   <!-- =======================================================
   * Template Name: NiceAdmin
@@ -285,13 +287,13 @@
 
       <li class="nav-item">
         <a class="nav-link " href="productos.php">
-          <i class="bi bi-person"></i>
+        <i class="fa-solid fa-martini-glass-empty"></i>
           <span>Productos</span>
         </a>
       </li>
       <li class="nav-item">
         <a class="nav-link " href="ventas.php">
-          <i class="bi bi-person"></i>
+        <i class="fa-solid fa-sack-dollar"></i>
           <span>ventas</span>
         </a>
       </li>
@@ -318,174 +320,86 @@
     <section class="inicio">
         <div class="container-lg">
           <div class="row">
-            <article class="col-lg-4 add-prod">
-              <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                + 
-              </button>
-              <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                  <div class="modal-content prod">
-                    <div class="modal-header">
-                      <h1 class="modal-title fs-5" id="exampleModalLabel">productos</h1>
-                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body form">
-                      <ul class="nav nav-tabs" id="myTab" role="tablist">
-                        <li class="nav-item" role="presentation">
-                          <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home-tab-pane" type="button" role="tab" aria-controls="home-tab-pane" aria-selected="true">Nuevo producto</button>
-                        </li>
-                        <li class="nav-item" role="presentation">
-                          <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile-tab-pane" type="button" role="tab" aria-controls="profile-tab-pane" aria-selected="false">Agregar Cantidad</button>
-                        </li>
-                        <li class="nav-item" role="presentation">
-                          <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact-tab-pane" type="button" role="tab" aria-controls="contact-tab-pane" aria-selected="false">Proveedores</button>
-                        </li>
-                        <li class="nav-item" role="presentation">
-                          <button class="nav-link" id="disabled-tab" data-bs-toggle="tab" data-bs-target="#disabled-tab-pane" type="button" role="tab" aria-controls="disabled-tab-pane" aria-selected="false">tipo</button>
-                        </li>
-                      </ul>
-                      <div class="tab-content" id="myTabContent">
-                        <div class="tab-pane fade active show" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0">
-                              
-                                <form action="assets/php/productos.php" id="N-producto" method="post" enctype="multipart/form-data">
-                                  <input type="text" name="Nombre" placeholder="nombre">
-                                    <?php
-                                      include("assets/php/conexionbd.php");
-                                      $query = "SELECT id , nombre FROM tipo_pr";
-                                      $result = mysqli_query($link, $query) or die("Error en la consulta de programa");
-                              
-                                      echo "<select name='cmbumedidads'>";
-                                        echo  "<option selected value=0> --Seleccione un tipo-- </option>";
-                                        
-                                      while($row=mysqli_fetch_array($result))
-                                      {
-                                                        echo  "<option value=$row[0]> $row[1] </option>";
-                                                    }
-                                            
-                                        echo "</select>";
-                                    ?>
-                                    <input type="number" name="Cantidad" placeholder="Cantidad">
-                                  <?php 
-                                      include("assets/php/conexionbd.php");
-                                      $query = "SELECT NID , nombre FROM proveedor";
-                                      $result = mysqli_query($link, $query) or die("Error en la consulta de programa");
-                              
-                                      echo "<select name='cmbumedidads1'>";
-                                        echo  "<option selected value=0> --Seleccione un proveedor -- </option>";
-                                        
-                                      while($row=mysqli_fetch_array($result))
-                                      {
-                                                        echo  "<option value=$row[0]> $row[1] </option>";
-                                                    }
-                                            
-                                        echo "</select>";
-                              
-                                      echo "</select>";
-                                    ?>
-                                  <input type="number" name="Precio" placeholder="Precio">
-                                  <input type="file" name="imagenp" accept="image/*">
-                                  <button type="submit">Guardar Producto</button>
-                                </form>
-                        </div>
-                        <div class="tab-pane fade" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
-                          <form action="assets/php/add_p.php" method="post" id="A-producto" >
-                          <?php
-                                     include"assets/php/conexionbd.php";
-                                     $query = "SELECT id , nombre FROM producto";
-                                     $result = mysqli_query($link, $query) or die("Error en la consulta de programa");
-                             
-                                     echo "<select name='productadd'>";
-                                     echo "<option selected value='0'>--Seleccione una producto--</option>";
-                                     while($row=mysqli_fetch_array($result))
-                                     {
-                                                       echo  "<option value=$row[0]> $row[1] </option>";
-                                                   }
-                                           
-                                       echo "</select>";
-                             
-                                     echo "</select>";
-                              ?>
-                                  
-                            <input type="number" name="cantidad_add" id="">
-                            <?php
-                                     include"assets/php/conexionbd.php";
-                                     $query = "SELECT NID , nombre FROM proveedor";
-                                     $result = mysqli_query($link, $query) or die("Error en la consulta de programa");
-                             
-                                     echo "<select name='productaddpro'>";
-                                     echo "<option selected value='0'>--Seleccione un proveedor--</option>";
-                             
-                                     while($row=mysqli_fetch_array($result))
-                                      {
-                                                        echo  "<option value=$row[0]> $row[1] </option>";
-                                                    }
-                                            
-                                        echo "</select>";
-                              
-                                      echo "</select>";
-                                    ?>
-                            <button type="submit">Guardar</button>
-                          </form>
-                        </div>
-                        <div class="tab-pane fade" id="contact-tab-pane" role="tabpanel" aria-labelledby="contact-tab" tabindex="0">
-                          <form action="../php/proveedor.php" method="post">
-                            <input type="nombre" name="N-proveedor" placeholder="Proveedor">
-                            <input type="number" name="DNI-proo" placeholder="Numero-proo">
-                            <button type="submit">Guardar</button>
-                          </form>
-                        </div>
-                        <div class="tab-pane fade" id="disabled-tab-pane" role="tabpanel" aria-labelledby="disabled-tab" tabindex="0">
-                          <form action="../php/tipo.php" method="post">
-                            <input type="text" name="n_tipo" id="">
-                            <button type="submit" id="btn_tipo">Guardar</button>
-                          </form>
-                        </div>
-                      </div>             
-                    </div>                    
-                  </div>
-                </div>
-              </div>
-            </article>
-            <!-- <div class="row">
-            <?php
-                                        include("assets/php/conexionbd.php");
-                                        $query = "SELECT id , nombre FROM tipo_pr";
-                                        $result = mysqli_query($link, $query) or die("Error en la consulta de programa");
-                                
-                                        echo "<select name='cmbumedidads'>";
-                                          echo  "<option selected value=0> --Seleccione un tipo-- </option>";
-                                          
-                                        while($row=mysqli_fetch_array($result))
-                                        {
-                                                          echo  "<option value=$row[0]> $row[1] </option>";
-                                                      }
-                                              
-                                          echo "</select>";
-              ?>
-          </div> -->
-          <div class="productos">
-        <div class="container">
-          <div class="row">
             <?php
             include('assets/php/conexionbd.php');
-             $con = mysqli_query($link,"SELECT * FROM producto");
+             $con = mysqli_query($link,"SELECT * FROM mesa");
 
              while($row= mysqli_fetch_array($con)){
             ?>
-            <article class="card prod-crd" style="width: 18rem;">
-              <img src="<?php echo $row['dir']?>" class="card-img-pro" alt="...">
-              <div class="card-body">
-                <h5 class="card-title"><?php echo $row['nombre']?></h5>
-                <p class="card-text">Cantidad: <?php echo $row['cantidad']?><br>Precio: <?php echo $row['precio']?></p>
+            <div class="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+              <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalToggleLabel" ><?php echo "mesa ".$row['N°']?></h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    <form action="assets/php/ventas.php" method="post">
+                    <?php
+                                        $query = "SELECT codigo , nombre FROM empleado";
+                                        $result = mysqli_query($link, $query) or die("Error en la consulta de programa");
+                                
+                                        echo "<select name='user'>";
+                                          echo  "<option selected value=0> --Seleccione un tipo-- </option>";
+                                          
+                                        while($fila=mysqli_fetch_array($result))
+                                        {
+                                                          echo  "<option value=$fila[0]> $fila[1] </option>";
+                                                      }
+                                              
+                                          echo "</select>";
+                      ?>
+                       <?php
+                                        $query = "SELECT N°,N FROM mesa";
+                                        $result = mysqli_query($link, $query) or die("Error en la consulta de programa");
+                                
+                                        echo "<select name='n-mesa'>";
+                                          echo  "<option selected value=0> --Seleccione un tipo-- </option>";
+                                          
+                                        while($fila=mysqli_fetch_array($result))
+                                        {
+                                                          echo  "<option value=$fila[0]> $fila[1] </option>";
+                                                      }
+                                              
+                                          echo "</select>";
+                      ?>
+                    </form>
+                  </div>
+                  <div class="modal-footer">
+                    <button class="btn btn-primary" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal" type="submit">ingresar orden</button>
+                  </div>
+                </div>
               </div>
-            </article>
-
+            </div>
+            <div class="modal fade" id="exampleModalToggle2" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2" tabindex="-1">
+              <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalToggleLabel2"><?php echo "mesa ".$row['N°']?></h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    ingreso principal
+                  </div>
+                  <div class="modal-footer">
+                    <button class="btn btn-primary" data-bs-target="#exampleModalToggle" data-bs-toggle="modal">Back to first</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <button class="btn btn-primary" data-bs-target="#exampleModalToggle" data-bs-toggle="modal"><?php echo "mesa ".$row['N°']?></button>
             <?php
              }
             ?>
+            
+          </div>
           </div>
         </div>
-      </div>
+        <div class="container-lg">
+            
+        </div>
+      </section>
+    
   </main><!-- End #main -->
 
   <!-- ======= Footer ======= -->
