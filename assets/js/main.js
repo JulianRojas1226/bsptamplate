@@ -317,3 +317,11 @@
   }
 
 })();
+document.addEventListener('DOMContentLoaded', function() {
+  // Verificar si el parámetro modal=true está en la URL
+  const urlParams = new URLSearchParams(window.location.search);
+  if (urlParams.get('modal') === 'true') {
+      // Aquí puedes abrir el modal
+      $('#exampleModalToggle2').modal('show');
+  }
+});

@@ -15,8 +15,9 @@ $n_mesa = $_POST["n-mesa"];
 $i_no = $link->prepare("INSERT INTO orden (mesa,emp) values (?,?)");
 $i_no->bind_param("ii",$n_mesa,$usuario);
 if ($i_no->execute()) {
-    header("Location: ../../ventas.php?modal=2&mesa=" . $n_mesa);
-  } else {  
+
+header('location: ../../ventas.php');
+} else {  
     echo "Error: " . $i_no->error;
   }
 
